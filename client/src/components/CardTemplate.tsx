@@ -110,13 +110,13 @@ export default function CardTemplate({
       className="card-preview bg-gradient-to-tr from-[#4F46E5] to-[#1D4ED8] rounded-lg shadow-lg overflow-hidden mx-auto"
       style={{ width: '350px', height: '540px' }}
     >
-      <div className="p-6 h-full flex flex-col text-white">
-        <div className="flex items-center justify-between mb-6">
+      <div className="p-5 h-full flex flex-col text-white">
+        <div className="flex items-center justify-between mb-4">
           <h3 className="text-xl font-bold">Unity School</h3>
           <div className="text-sm font-medium bg-white/20 px-2 py-1 rounded-full">ID CARD</div>
         </div>
         
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center mb-3">
           <div className="w-28 h-36 bg-white/10 rounded-md overflow-hidden shadow-md">
             {studentData.photo && (
               <img src={studentData.photo} alt="Student photo" className="w-full h-full object-cover" />
@@ -124,7 +124,7 @@ export default function CardTemplate({
           </div>
         </div>
         
-        <div className="text-center mb-6">
+        <div className="text-center mb-3">
           <h3 className="text-xl font-bold mb-1">{studentData.name}</h3>
           <div className="text-white/80 text-sm">
             <span>{`${studentData.class} ${studentData.division}`}</span> • 
@@ -132,7 +132,7 @@ export default function CardTemplate({
           </div>
         </div>
         
-        <div className="bg-white/10 rounded-lg p-3 mb-4">
+        <div className="bg-white/10 rounded-lg p-3 mb-3">
           <div className="grid grid-cols-2 gap-y-2 text-sm">
             <div className="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -161,7 +161,7 @@ export default function CardTemplate({
         </div>
         
         {studentData.allergies && studentData.allergies.length > 0 && (
-          <div className="mb-4">
+          <div className="mb-3">
             <h4 className="text-sm font-medium mb-1 flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -181,8 +181,8 @@ export default function CardTemplate({
           </div>
         )}
         
-        <div className="mt-auto flex items-end justify-center">
-          <div className="bg-white p-2 rounded shadow-sm inline-block" style={{ marginBottom: '10px' }}>
+        <div className="flex justify-center mt-auto pb-3">
+          <div className="bg-white p-2 rounded shadow-sm">
             <QRCodeSVG 
               value={JSON.stringify({
                 id: studentData.id,
@@ -191,8 +191,8 @@ export default function CardTemplate({
                 class: studentData.class,
                 division: studentData.division
               })} 
-              size={80} 
-              className="w-20 h-20"
+              size={74} 
+              className="w-[74px] h-[74px]"
             />
           </div>
         </div>
