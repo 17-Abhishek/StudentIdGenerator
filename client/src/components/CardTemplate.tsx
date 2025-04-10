@@ -85,7 +85,13 @@ export default function CardTemplate({
             </div>
             <div className="bg-white p-1 rounded shadow-sm">
               <QRCodeSVG 
-                value={JSON.stringify(studentData)} 
+                value={JSON.stringify({
+                  id: studentData.id,
+                  name: studentData.name,
+                  rollNumber: studentData.rollNumber,
+                  class: studentData.class,
+                  division: studentData.division
+                })} 
                 size={96} 
                 className="w-24 h-24"
               />
@@ -178,7 +184,13 @@ export default function CardTemplate({
         <div className="mt-auto flex items-end justify-center">
           <div className="bg-white p-2 rounded shadow-sm inline-block">
             <QRCodeSVG 
-              value={JSON.stringify(studentData)} 
+              value={JSON.stringify({
+                id: studentData.id,
+                name: studentData.name,
+                rollNumber: studentData.rollNumber,
+                class: studentData.class,
+                division: studentData.division
+              })} 
               size={96} 
               className="w-24 h-24"
             />
