@@ -182,7 +182,7 @@ export default function CardTemplate({
         )}
         
         <div className="mt-auto flex items-end justify-center">
-          <div className="bg-white p-2 rounded shadow-sm inline-block">
+          <div className="bg-white p-2 rounded shadow-sm inline-block" style={{ marginBottom: '10px' }}>
             <QRCodeSVG 
               value={JSON.stringify({
                 id: studentData.id,
@@ -191,8 +191,8 @@ export default function CardTemplate({
                 class: studentData.class,
                 division: studentData.division
               })} 
-              size={96} 
-              className="w-24 h-24"
+              size={80} 
+              className="w-20 h-20"
             />
           </div>
         </div>
