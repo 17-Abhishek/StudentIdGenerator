@@ -110,32 +110,32 @@ export default function CardTemplate({
       className="card-preview bg-gradient-to-tr from-[#4F46E5] to-[#1D4ED8] rounded-lg shadow-lg overflow-hidden mx-auto"
       style={{ width: '350px', height: '540px' }}
     >
-      <div className="p-5 h-full flex flex-col text-white">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-bold">Unity School</h3>
-          <div className="text-sm font-medium bg-white/20 px-2 py-1 rounded-full">ID CARD</div>
+      <div className="p-4 h-full flex flex-col text-white">
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-lg font-bold">Unity School</h3>
+          <div className="text-xs font-medium bg-white/20 px-2 py-1 rounded-full">ID CARD</div>
         </div>
         
-        <div className="flex justify-center mb-3">
-          <div className="w-28 h-36 bg-white/10 rounded-md overflow-hidden shadow-md">
+        <div className="flex justify-center mb-2">
+          <div className="w-24 h-32 bg-white/10 rounded-md overflow-hidden shadow-md">
             {studentData.photo && (
               <img src={studentData.photo} alt="Student photo" className="w-full h-full object-cover" />
             )}
           </div>
         </div>
         
-        <div className="text-center mb-3">
-          <h3 className="text-xl font-bold mb-1">{studentData.name}</h3>
-          <div className="text-white/80 text-sm">
+        <div className="text-center mb-2">
+          <h3 className="text-lg font-bold">{studentData.name}</h3>
+          <div className="text-white/80 text-xs">
             <span>{`${studentData.class} ${studentData.division}`}</span> • 
             <span>{` Roll No: ${studentData.rollNumber}`}</span>
           </div>
         </div>
         
-        <div className="bg-white/10 rounded-lg p-3 mb-3">
-          <div className="grid grid-cols-2 gap-y-2 text-sm">
+        <div className="bg-white/10 rounded-lg p-2 mb-2">
+          <div className="grid grid-cols-2 gap-y-1 text-xs">
             <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
               </svg>
               <span className="text-white/60">Rack No:</span>
@@ -143,7 +143,7 @@ export default function CardTemplate({
             <div className="font-medium">{studentData.rackNumber}</div>
             
             <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span className="text-white/60">Valid:</span>
@@ -151,7 +151,7 @@ export default function CardTemplate({
             <div className="font-medium">2023-24</div>
             
             <div className="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1 text-white/60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
               <span className="text-white/60">Bus Route:</span>
@@ -161,9 +161,9 @@ export default function CardTemplate({
         </div>
         
         {studentData.allergies && studentData.allergies.length > 0 && (
-          <div className="mb-3">
-            <h4 className="text-sm font-medium mb-1 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1 text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <div className="mb-2">
+            <h4 className="text-xs font-medium mb-1 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 mr-1 text-red-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
               </svg>
               <span>Allergies:</span>
@@ -172,7 +172,7 @@ export default function CardTemplate({
               {studentData.allergies.map((allergy) => (
                 <span 
                   key={allergy} 
-                  className="bg-red-500/30 text-white text-xs px-2 py-0.5 rounded-full"
+                  className="bg-red-500/30 text-white text-[10px] px-1.5 py-0.5 rounded-full"
                 >
                   {allergy}
                 </span>
@@ -181,8 +181,8 @@ export default function CardTemplate({
           </div>
         )}
         
-        <div className="flex justify-center mt-auto pb-3">
-          <div className="bg-white p-2 rounded shadow-sm">
+        <div className="mt-auto mb-1 flex justify-center">
+          <div className="bg-white p-1.5 rounded shadow-sm">
             <QRCodeSVG 
               value={JSON.stringify({
                 id: studentData.id,
@@ -191,8 +191,8 @@ export default function CardTemplate({
                 class: studentData.class,
                 division: studentData.division
               })} 
-              size={74} 
-              className="w-[74px] h-[74px]"
+              size={70} 
+              className="w-[70px] h-[70px]"
             />
           </div>
         </div>
