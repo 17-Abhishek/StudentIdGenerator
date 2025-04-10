@@ -228,47 +228,101 @@ export default function StudentForm({
             <FormField
               control={form.control}
               name="allergies"
-              render={() => (
-                <FormItem className="relative">
+              render={({ field }) => (
+                <FormItem className="relative space-y-4">
                   <FormLabel className="block text-sm font-medium text-gray-700 mb-1">
                     Allergies
                   </FormLabel>
-                  <div className="grid grid-cols-2 gap-2">
+                  
+                  {/* Common allergies checkboxes */}
+                  <div className="grid grid-cols-2 gap-2 mb-2">
                     {allergiesList.map((allergy) => (
-                      <FormField
+                      <FormItem
                         key={allergy.id}
-                        control={form.control}
-                        name="allergies"
-                        render={({ field }) => {
-                          return (
-                            <FormItem
-                              key={allergy.id}
-                              className="flex flex-row items-start space-x-2 space-y-0"
-                            >
-                              <FormControl>
-                                <Checkbox
-                                  checked={field.value?.includes(allergy.label)}
-                                  onCheckedChange={(checked) => {
-                                    return checked
-                                      ? field.onChange([...field.value, allergy.label])
-                                      : field.onChange(
-                                          field.value?.filter(
-                                            (value) => value !== allergy.label
-                                          )
-                                        )
-                                  }}
-                                  className="rounded border-gray-300 text-primary focus:ring-primary"
-                                />
-                              </FormControl>
-                              <FormLabel className="ml-2 text-sm text-gray-700 cursor-pointer">
-                                {allergy.label}
-                              </FormLabel>
-                            </FormItem>
-                          )
-                        }}
-                      />
+                        className="flex flex-row items-start space-x-2 space-y-0"
+                      >
+                        <FormControl>
+                          <Checkbox
+                            checked={field.value?.includes(allergy.label)}
+                            onCheckedChange={(checked) => {
+                              return checked
+                                ? field.onChange([...field.value, allergy.label])
+                                : field.onChange(
+                                    field.value?.filter(
+                                      (value) => value !== allergy.label
+                                    )
+                                  )
+                            }}
+                            className="rounded border-gray-300 text-primary focus:ring-primary"
+                          />
+                        </FormControl>
+                        <FormLabel className="ml-2 text-sm text-gray-700 cursor-pointer">
+                          {allergy.label}
+                        </FormLabel>
+                      </FormItem>
                     ))}
                   </div>
+                  
+                  {/* Custom allergy input */}
+                  <div className="mt-3">
+                    <FormLabel className="block text-sm font-medium text-gray-700 mb-1">
+                      Add Custom Allergy
+                    </FormLabel>
+                    <div className="flex">
+                      <Input
+                        id="custom-allergy"
+                        placeholder="Type a custom allergy"
+                        className="block w-full rounded-l-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary p-2.5 border"
+                      />
+                      <Button
+                        type="button"
+                        className="rounded-l-none bg-primary text-white hover:bg-primary/90"
+                        onClick={() => {
+                          const customAllergyInput = document.getElementById('custom-allergy') as HTMLInputElement;
+                          const customAllergy = customAllergyInput.value.trim();
+                          
+                          if (customAllergy && !field.value.includes(customAllergy)) {
+                            field.onChange([...field.value, customAllergy]);
+                            customAllergyInput.value = '';
+                          }
+                        }}
+                      >
+                        Add
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  {/* Selected allergies display */}
+                  {field.value.length > 0 && (
+                    <div className="mt-3">
+                      <FormLabel className="block text-sm font-medium text-gray-700 mb-1">
+                        Selected Allergies:
+                      </FormLabel>
+                      <div className="flex flex-wrap gap-2">
+                        {field.value.map((allergy, index) => (
+                          <div 
+                            key={`${allergy}-${index}`}
+                            className="bg-gray-100 text-gray-800 text-xs rounded-full px-2 py-1 flex items-center"
+                          >
+                            {allergy}
+                            <button
+                              type="button"
+                              className="ml-1 text-gray-500 hover:text-red-500"
+                              onClick={() => {
+                                field.onChange(field.value.filter((_, i) => i !== index));
+                              }}
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
+                  <FormMessage className="text-xs text-red-500" />
                 </FormItem>
               )}
             />
